@@ -7,9 +7,11 @@ Object.freeze(Array.prototype);
 const solveSudoku = require('./src/index.js');
 
 function isSolved(initial, sudoku) {
+  const s = new Set([1,2,3,4,5,6,7,8,9]);
   for (let i = 0; i < 9; i++) {
     let [r,c] = [Math.floor(i/3)*3,(i%3)*3];
     if (
+        (!sudoku[i].reduce((r,e) => s.has(e), true)) ||
         (sudoku[i].reduce((s,v)=>s.add(v),new Set()).size != 9) ||
         (sudoku.reduce((s,v)=>s.add(v[i]),new Set()).size != 9) ||
         (sudoku.slice(r,r+3).reduce((s,v)=>v.slice(c,c+3).reduce((s,v)=>s.add(v),s),new Set()).size != 9)
