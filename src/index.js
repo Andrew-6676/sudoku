@@ -9,7 +9,7 @@ module.exports = function solveSudoku(matrix) {
     }
 
     //второе приближение - на всякий случай прогоним несколько раз ;)
-    for (let q=1;q<9; q++) {
+    for (let q=1;q<10; q++) {
         // уточняем по строкам возможные варианты
         for (let r = 0; r < 9; r++) {
             let so = {};
@@ -66,7 +66,17 @@ module.exports = function solveSudoku(matrix) {
                 exclude(matrix, must_solve, solved, so);
             })
         });
-    }
+
+
+        //console.log(q, '-------');
+    } // end for
+
+    // print(matrix);
+    // а дальше брутфорс
+
+
+
+
 
 
     //print(matrix);
